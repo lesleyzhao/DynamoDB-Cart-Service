@@ -8,11 +8,11 @@ import java.math.BigDecimal;
 @DynamoDbBean
 public class CartItem { // This class is used to represent a cart item in the cart service
 
-    private String productId; // The product id of the cart item
+    private String productId;
     //不需要在这里存储product的其他信息，用id去product表里查就行
-    private String productName; // The product name of the cart item
-    private int quantity; // The quantity of the cart item
-    private BigDecimal price; // The price of the cart item
+    private String productName;
+    private int quantity;
+    private BigDecimal price;
     //注意要是在实际开发中不能用double，因为double会有精度问题，用BigDecimal
 
     public CartItem() {
