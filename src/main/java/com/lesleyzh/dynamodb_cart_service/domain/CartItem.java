@@ -3,6 +3,8 @@ package com.lesleyzh.dynamodb_cart_service.domain;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+import java.math.BigDecimal;
+
 @DynamoDbBean
 public class CartItem { // This class is used to represent a cart item in the cart service
 
@@ -10,12 +12,13 @@ public class CartItem { // This class is used to represent a cart item in the ca
     //不需要在这里存储product的其他信息，用id去product表里查就行
     private String productName; // The product name of the cart item
     private int quantity; // The quantity of the cart item
-    private double price; // The price of the cart item
+    private BigDecimal price; // The price of the cart item
+    //注意要是在实际开发中不能用double，因为double会有精度问题，用BigDecimal
 
     public CartItem() {
     }
 
-    public CartItem(String productId, String productName, int quantity, double price) {
+    public CartItem(String productId, String productName, int quantity, BigDecimal price) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
@@ -38,7 +41,7 @@ public class CartItem { // This class is used to represent a cart item in the ca
     }
 
     @DynamoDbAttribute("price")
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -54,7 +57,7 @@ public class CartItem { // This class is used to represent a cart item in the ca
         this.quantity = quantity;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
