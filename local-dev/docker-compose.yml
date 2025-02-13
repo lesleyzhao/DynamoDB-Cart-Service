@@ -1,0 +1,17 @@
+services:
+  # aws local deployment
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - SERVICES=s3, sqs, kinesis, cloudwatch, dynamo
+    ports:
+      - "4549-4566:4549-4566"
+    volumes:
+      - ./aws:/etc/localstack/init/ready.d/
+      - localstack_data:/var/lib/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+volumes:
+  localstack_data: {}
