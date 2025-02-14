@@ -15,20 +15,26 @@ The **Cart Service** is a backend microservice designed to handle shopping cart 
 ```
 src/
 │── main/
-│   ├── controller/
-│   │   ├── CartController.java
-│   │   ├── ItemController.java
-│   ├── service/
-│   │   ├── CartService.java
-│   │   ├── ItemService.java
-│   ├── repository/
-│   │   ├── CartRepository.java
-│   │   ├── ItemRepository.java
-│   ├── model/
-│   │   ├── Cart.java
-│   │   ├── Item.java
+│   ├── java/com/lesleyzh/dynamodb_cart_service/
+│   │   ├── Configuration/
+│   │   │   ├── DynamodbConfig.java     # Configures AWS DynamoDB client
+│   │   ├── controller/
+│   │   │   ├── CartServiceController.java  # REST API for managing carts
+│   │   ├── domain/
+│   │   │   ├── Cart.java               # Entity representing a cart
+│   │   │   ├── CartItem.java            # Entity representing a cart item
+│   │   ├── repository/
+│   │   │   ├── CartRepository.java      # Handles database interactions
+│   │   ├── service/
+│   │   │   ├── CartService.java         # Business logic for carts
+│   │   ├── DynamoDbCartServiceApplication.java  # Main Spring Boot entry point
 │── resources/
-│   ├── application.yml
+│   ├── application.yml                  # Spring Boot configuration
+│── local-dev/
+│   ├── aws/
+│   │   ├── init-aws.sh                   # Script to create DynamoDB tables
+│   ├── docker-compose.yml                 # LocalStack setup for local AWS services
+
 ```
 
 ## 🔧 Technologies Used
