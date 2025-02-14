@@ -62,7 +62,7 @@ src/
    ```sh
    ./gradlew build
    ```
-3. **Run using Docker Compose** (if applicable)
+3. **Configure aws local-stack environment using Docker** 
    ```sh
    docker-compose up -d
    ```
@@ -73,7 +73,6 @@ src/
 
 ## 📖 Notes
 - Ensure **AWS credentials** are configured for DynamoDB access.
-- Use **AWS DynamoDB Local** for local development.
 - Set up **CORS policies** if integrating with a frontend.
 
 ## 🤝 Contributing
