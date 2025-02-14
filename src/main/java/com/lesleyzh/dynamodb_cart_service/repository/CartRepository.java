@@ -21,11 +21,13 @@ public class CartRepository {
         // TableSchema.fromBean(Cart.class) → Maps the Cart Java class to the table structure
     }
 
+    //以下这些就是API，直接调用即可
     public Cart findById(String cartId) {
         Key key = Key.builder().partitionValue(cartId).build();
         return cartTable.getItem(key);
     }
 
+    //实际开发中需要考虑时差，服务器架在纽约就是纽约时间，香港就是香港时间
     public void save(Cart cart) {
         cart.setUpdatedAt(System.currentTimeMillis());
         cartTable.putItem(cart);
