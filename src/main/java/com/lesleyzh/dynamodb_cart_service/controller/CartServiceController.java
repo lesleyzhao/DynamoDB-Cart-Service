@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
 @RestController
-@RequestMapping("/api/cart")
+@RequestMapping("/api/carts") //所有打到controller的请求都以/api/carts开始
 public class CartServiceController {
+
     //通过bean injection把service注入进来，来实现和service的互动
     private final CartService cartService;
 
@@ -25,12 +26,12 @@ public class CartServiceController {
     }
 
     @GetMapping("/{cartId}")
-    public ResponseEntity<Cart> getCart(@RequestParam String cartId) {
+    public ResponseEntity<Cart> getCart(@PathVariable String cartId) {
         return ResponseEntity.ok(cartService.getCart(cartId));
     }
 
     @PostMapping("/{cartId}/item")
-    public ResponseEntity<Cart> addItem(@RequestParam String cartId, @RequestParam String productId, @RequestParam int quantity) {
+    public ResponseEntity<Cart> addItem(@PathVariable String cartId, @RequestParam String productId, @RequestParam int quantity) {
         //validation
         if(quantity <= 0) {
             return ResponseEntity.badRequest().build();
@@ -42,7 +43,7 @@ public class CartServiceController {
     }
 
     @DeleteMapping("/{cartId}/item")
-    public ResponseEntity<Cart> removeItem(@RequestParam String cartId, @RequestParam String productId) {
+    public ResponseEntity<Cart> removeItem(@PathVariable String cartId, @RequestParam String productId) {
         //validation
         if(productId == null || productId.isEmpty()) {
             return ResponseEntity.badRequest().build();
@@ -63,9 +64,9 @@ public class CartServiceController {
     }
 
     @DeleteMapping("/{cartId}")
-    public ResponseEntity<Cart> deleteCart(@RequestParam String cartId) {
+    public ResponseEntity<Cart> deleteCart(@PathVariable String cartId) {
         cartService.deleteCart(cartId);
         return ResponseEntity.noContent().build();
     }
-    
+
 }

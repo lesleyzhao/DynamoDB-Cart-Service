@@ -17,7 +17,7 @@ public class CartRepository {
 
     public CartRepository(DynamoDbEnhancedClient enhancedClient) {
         this.enhancedClient = enhancedClient;
-        this.cartTable = enhancedClient.table("Cart", TableSchema.fromBean(Cart.class));
+        this.cartTable = enhancedClient.table("cart-table", TableSchema.fromBean(Cart.class));
         // TableSchema.fromBean(Cart.class) → Maps the Cart Java class to the table structure
     }
 

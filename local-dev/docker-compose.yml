@@ -5,7 +5,7 @@ services:
     environment:
       - AWS_DEFAULT_REGION=us-east-1
       - EDGE_PORT=4566
-      - SERVICES=s3, sqs, kinesis, cloudwatch, dynamo
+      - SERVICES=s3, sqs, kinesis, cloudwatch, dynamodb
     ports:
       - "4549-4566:4549-4566"
     volumes:
