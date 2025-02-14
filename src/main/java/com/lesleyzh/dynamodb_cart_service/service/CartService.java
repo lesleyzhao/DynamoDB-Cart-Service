@@ -31,7 +31,11 @@ public class CartService {
         return cart;
     }
 
-    public Cart addItem(String cartId, CartItem item) {
+    public Cart addItem(String cartId, String productId, int quantity) {
+        CartItem item = new CartItem();
+        item.setProductId(productId);
+        item.setQuantity(quantity);
+
         Cart cart = cartRepository.findById(cartId);
         //看一下这个item在cart里有没有，有的话就更新数量，没有就加进去
         Optional<CartItem> existingItem = cart.getCartItems().stream().filter(i -> i.getProductId().equals(item.getProductId())).findFirst();
@@ -56,12 +60,12 @@ public class CartService {
     }
 
 
-    public Cart updateItem(String cartId, CartItem item) {
+    public Cart updateItem(String cartId, String productId, int quantity) {
         Cart cart = cartRepository.findById(cartId);
-        Optional<CartItem> existingItem = cart.getCartItems().stream().filter(i -> i.getProductId().equals(item.getProductId())).findFirst();
+        Optional<CartItem> existingItem = cart.getCartItems().stream().filter(i -> i.getProductId().equals(productId)).findFirst();
 
         if (existingItem.isPresent()) {
-            existingItem.get().setQuantity(item.getQuantity());
+            existingItem.get().setQuantity(quantity);
             cart.setUpdatedAt(System.currentTimeMillis());
             cartRepository.save(cart);
         }

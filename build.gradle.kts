@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.4.2")
 
     implementation("software.amazon.awssdk:dynamodb:2.30.15")
     implementation("software.amazon.awssdk:dynamodb-enhanced:2.30.15")
