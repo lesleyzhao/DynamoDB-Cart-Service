@@ -55,8 +55,8 @@ src/
 ### Steps to Run Locally
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/yourusername/cart_service.git
-   cd cart_service
+   git clone https://github.com/lesleyzhao/DynamoDB-Cart-Service.git
+   cd DynamoDB-Cart-Service
    ```
 2. **Build the project**
    ```sh
