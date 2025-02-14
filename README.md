@@ -13,6 +13,11 @@ The **Cart Service** is a backend microservice designed to handle shopping cart 
 
 ## 🏗️ Project Structure
 ```
+local-dev/
+├── aws/
+│   ├── init-aws.sh                   # Script to create DynamoDB tables
+├── docker-compose.yml                 # LocalStack setup for local AWS services
+
 src/
 │── main/
 │   ├── java/com/lesleyzh/dynamodb_cart_service/
@@ -30,10 +35,6 @@ src/
 │   │   ├── DynamoDbCartServiceApplication.java  # Main Spring Boot entry point
 │── resources/
 │   ├── application.yml                  # Spring Boot configuration
-│── local-dev/
-│   ├── aws/
-│   │   ├── init-aws.sh                   # Script to create DynamoDB tables
-│   ├── docker-compose.yml                 # LocalStack setup for local AWS services
 
 ```
 
